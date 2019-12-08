@@ -4,13 +4,15 @@ import com.db.exersize.arrays.MatchUp;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static junit.framework.TestCase.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MatchUpTest {
 
-    MatchUp matchUp = new MatchUp();
+    private MatchUp matchUp = new MatchUp();
 
     @Test
-    public void ShouldCountValueOfElementsWithShortDistanceTest1() {
+    public void shouldCountValueOfElementsWithShortDistanceTest() {
         //GIVEN
         int[] arr1 = {6, 5, 8};
         int[] arr2 = {7, 10, 12};
@@ -24,7 +26,7 @@ public class MatchUpTest {
     }
 
     @Test
-    public void ShouldCountValueOfElementsWithShortDistanceTest2() {
+    public void shouldReturnZeroIfOneEqualElementInBothArrays() {
         //GIVEN
         int[] arr1 = {2};
         int[] arr2 = {2};
@@ -38,30 +40,46 @@ public class MatchUpTest {
     }
 
     @Test
-    public void ShouldCountValueOfElementsWithShortDistanceTest3() {
+    public void shouldReturnZeroIfBothArraysDontHaveElements() {
         //GIVEN
-        int[] arr1 = {1, 2, 3};
-        int[] arr2 = {2, 3, 3};
+        int[] arr1 = {};
+        int[] arr2 = {};
 
         //WHEN
         int actual = matchUp.matchUp(arr1, arr2);
-        int expected = 2;
+        int expected = 0;
 
         //THEN
         assertEquals(expected, actual);
     }
 
     @Test
-    public void ShouldCountValueOfElementsWithShortDistanceTest4() {
+    public void shouldReturnZeroIfDifferenceMoreThenTwoOrZero() {
         //GIVEN
-        int[] arr1 = {6, 45, 0};
+        int[] arr1 = {3, 45, 0};
         int[] arr2 = {7, 10, 0};
 
         //WHEN
         int actual = matchUp.matchUp(arr1, arr2);
-        int expected = 1;
+        int expected = 0;
 
         //THEN
         assertEquals(expected, actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+
+    public void shouldCheckNullPointerException(){
+        //GIVEN
+        int[] arr1 = null;
+        int[] arr2 = null;
+
+        //WHEN
+        try{
+            int actual = matchUp.matchUp(arr1, arr2);
+            fail();
+        } catch (NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

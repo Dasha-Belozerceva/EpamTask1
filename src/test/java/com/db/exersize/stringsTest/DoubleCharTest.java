@@ -6,10 +6,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DoubleCharTest {
-    DoubleChar doubleChar = new DoubleChar();
+    private DoubleChar doubleChar = new DoubleChar();
 
     @Test
-    public void ShouldReturnDoubleCharStringTest1() {
+    public void shouldReturnDoubleCharStringTest() {
         //GIVEN
         String str = "The";
 
@@ -22,7 +22,7 @@ public class DoubleCharTest {
     }
 
         @Test
-        public void ShouldReturnDoubleCharStringTest2() {
+        public void shouldReturnEmptyStringIfGivenIsEmpty() {
             //GIVEN
             String str = "";
 
@@ -35,7 +35,7 @@ public class DoubleCharTest {
         }
 
     @Test
-    public void ShouldReturnDoubleCharStringTest3() {
+    public void shouldReturnDoubleCharStringWhenGivenContainsDifferentSymbols() {
         //GIVEN
         String str = "!&*?.";
 
@@ -48,15 +48,29 @@ public class DoubleCharTest {
     }
 
     @Test
-    public void ShouldReturnDoubleCharStringTest4() {
+    public void shouldReturnDoubleCharStringWhenOnlyOneSpaceCharInTheString() {
         //GIVEN
-        String str = "La puta";
+        String str = " ";
 
         //WHEN
         String actual = doubleChar.doubleChar(str);
-        String expected = "LLaa  ppuuttaa";
+        String expected = "  ";
 
         //THEN
         assertEquals(expected, actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckExceptionIfStringISNull(){
+        //GIVEN
+        String str = null;
+
+        //WHEN
+        try{
+            String actual = doubleChar.doubleChar(str);
+            fail();
+        } catch(NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

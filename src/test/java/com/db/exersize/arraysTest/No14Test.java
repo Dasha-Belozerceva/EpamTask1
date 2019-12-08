@@ -6,59 +6,71 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import static junit.framework.TestCase.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class No14Test {
 
-    No14 no14 = new No14();
+    private No14 no14 = new No14();
 
     @Test
-    public void ShouldCheckIfContainsNo1orNo4Test1() {
+    public void shouldCheckIfTrueWhenOneOneAndNoFour() {
         //GIVEN
         int[] arr = {6, 5, 8, 1, 6, 9};
 
         //WHEN
         Boolean actual = no14.no14(arr);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckIfContainsNo1orNo4Test2() {
+    public void shouldCheckIfTrueWhenArrayIsEmpty() {
         //GIVEN
         int[] arr = {};
 
         //WHEN
         Boolean actual = no14.no14(arr);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckIfContainsNo1orNo4Test3() {
+    public void shouldCheckIfTrueWhenNoOneAndNoFour() {
         //GIVEN
         int[] arr = {3, 6, 8};
 
         //WHEN
         Boolean actual = no14.no14(arr);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckIfContainsNo1orNo4Test4() {
+    public void shouldCheckIfFalseWhenExistFourAndOne() {
         //GIVEN
         int[] arr = {5, 8, 4, 6, 4, 7, 1, 5};
 
         //WHEN
         Boolean actual = no14.no14(arr);
-        Boolean expected = false;
-
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(!actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckNullPointerExceptionWhenGivenArrayIsNull(){
+        //GIVEN
+        int[] arr = null;
+
+        //WHEN
+        try{
+            boolean actual = no14.no14(arr);
+            fail();
+        } catch (NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

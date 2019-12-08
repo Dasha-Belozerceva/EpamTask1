@@ -1,15 +1,18 @@
 package com.db.exersize.arraysTest;
 
 import com.db.exersize.arrays.Post4;
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
-import org.junit.Assert;
+import static junit.framework.TestCase.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Post4Test {
 
-    Post4 post4 = new Post4();
+    private Post4 post4 = new Post4();
 
     @Test
-    public void ShouldReturnArrayAfterLastFourTest1() {
+    public void shouldReturnEmptyArrayIfArrayContainOnlyOneFour() {
         //GIVEN
         int[] newArr = {4};
 
@@ -18,11 +21,11 @@ public class Post4Test {
         int[] expected = {};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void ShouldReturnArrayAfterLastFourTest2() {
+    public void shouldReturnLastElementIfLastFourIsBeforeLast() {
         //GIVEN
         int[] newArr = {1, 4, 6, 34, 3, 4, 6};
 
@@ -31,32 +34,46 @@ public class Post4Test {
         int[] expected = {6};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void ShouldReturnArrayAfterLastFourTest3() {
+    public void shouldReturnEmptyArrIfNoElementsInArray() {
         //GIVEN
-        int[] newArr = {1, 4, 4, 2, 2};
+        int[] newArr = {};
 
         //WHEN
         int[] actual = post4.post4(newArr);
-        int[] expected = {2, 2};
+        int[] expected = {};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void ShouldReturnArrayAfterLastFourTest4() {
+    public void shouldReturnEmptyIfNoFourInArr() {
         //GIVEN
-        int[] newArr = {1, 6, 4, 65, 189, 3};
+        int[] newArr = {2, 6, 65, 189, 3};
 
         //WHEN
         int[] actual = post4.post4(newArr);
-        int[] expected = {65, 189, 3};
+        int[] expected = {};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckNullPointerExceptionWhenArrayIsNull(){
+        //GIVEN
+        int[] newArr = null;
+
+        //WHEN
+        try{
+            int[] actual = post4.post4(newArr);
+            fail();
+        } catch (NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

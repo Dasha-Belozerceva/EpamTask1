@@ -6,10 +6,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CountHiTest {
-    CountHi countHi = new CountHi();
+    private CountHi countHi = new CountHi();
 
     @Test
-    public void ShouldCountHiInTheStringTest1() {
+    public void shouldReturnZeroIfEmptyString() {
         //GIVEN
         String str = "";
 
@@ -22,7 +22,7 @@ public class CountHiTest {
     }
 
     @Test
-    public void ShouldCountHiInTheStringTest2() {
+    public void shouldCheckIfUppercaseDoesntCount() {
         //GIVEN
         String str = "HiHIhi";
 
@@ -35,7 +35,7 @@ public class CountHiTest {
     }
 
     @Test
-    public void ShouldCountHiInTheStringTest3() {
+    public void shouldCheckIfUppercaseWithSpacesDoesntCount() {
         //GIVEN
         String str = "HI! there Hi";
 
@@ -48,7 +48,7 @@ public class CountHiTest {
     }
 
     @Test
-    public void ShouldCountHiInTheStringTest4() {
+    public void shouldCheckIfIsCountWithSpacesAndNoSpacesBetween() {
         //GIVEN
         String str = "Hi hi Hey Hop La La Lay hihihi";
 
@@ -58,5 +58,19 @@ public class CountHiTest {
 
         //THEN
         assertEquals(expected, actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckExceptionWhenNullString(){
+        //GIVEN
+        String str = null;
+
+        //WHEN
+        try{
+            int actual = countHi.countHi(str);
+            fail();
+        } catch (NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

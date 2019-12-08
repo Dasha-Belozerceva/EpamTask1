@@ -2,11 +2,15 @@ package com.db.exersize.arrays;
 
 public class Post4 {
     public int[] post4(int[] nums) {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < nums.length; ++i){
             if (nums[i] == 4){
                 index = i;
             }
+        }
+        if(index == -1){
+            int[] emptyArr = {};
+            return emptyArr;
         }
         int[] newArray = new int[nums.length - index -1];
         int j = 0;

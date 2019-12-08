@@ -1,13 +1,14 @@
 package com.db.exersize.arraysTest;
 
 import com.db.exersize.arrays.FizzArray;
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
-import org.junit.Assert;
 
 public class FizzArrayTest{
-    FizzArray fizzArray = new FizzArray();
+    private FizzArray fizzArray = new FizzArray();
     @Test
-    public void ShouldReturnArrayOfIndexesTest1() {
+    public void shouldCheckCaseWhenNIsFour() {
         //GIVEN
         int n = 4;
 
@@ -16,11 +17,11 @@ public class FizzArrayTest{
         int[] expected = {0, 1, 2, 3};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void ShouldReturnArrayOfIndexesTest2() {
+    public void shouldCheckCaseWhenNIsOne() {
         //GIVEN
         int n = 1;
 
@@ -29,11 +30,11 @@ public class FizzArrayTest{
         int[] expected = {0};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+       assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void ShouldReturnArrayOfIndexesTest3() {
+    public void shouldCheckCaseWhenNIsZero() {
         //GIVEN
         int n = 0;
 
@@ -42,11 +43,11 @@ public class FizzArrayTest{
         int[] expected = {};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void ShouldReturnArrayOfIndexesTest4() {
+    public void shouldCheckCaseWhenNIsTen() {
         //GIVEN
         int n = 10;
 
@@ -55,6 +56,6 @@ public class FizzArrayTest{
         int[] expected = {0, 1, 2, 3, 4, 5, 6, 7, 8 , 9};
 
         //THEN
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 }

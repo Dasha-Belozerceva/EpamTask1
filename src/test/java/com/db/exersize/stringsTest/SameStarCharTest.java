@@ -7,57 +7,67 @@ import static org.junit.Assert.*;
 
 public class SameStarCharTest {
 
-    SameStarChar sameStarChar = new SameStarChar();
+    private SameStarChar sameStarChar = new SameStarChar();
 
     @Test
-    public void ShouldCheckLettersNearStarTest1() {
+    public void shouldReturnTrueIfStringContainsOfTwoStars() {
         //GIVEN
         String str = "**";
 
         //WHEN
         Boolean actual = sameStarChar.sameStarChar(str);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckLettersNearStarTest2() {
+    public void shouldReturnTrueIfStringIsEmpty() {
         //GIVEN
         String str = "";
 
         //WHEN
         Boolean actual = sameStarChar.sameStarChar(str);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckLettersNearStarTest3() {
+    public void shouldReturnFalseIfOneOfStarsNoWithTheSameElements() {
         //GIVEN
         String str = "ase*exdr*t";
 
         //WHEN
         Boolean actual = sameStarChar.sameStarChar(str);
-        Boolean expected = false;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(!actual);
     }
 
     @Test
-    public void ShouldCheckLettersNearStarTest4() {
+    public void shouldReturnTrueIfInAllCasesTheSameLetters() {
         //GIVEN
         String str = "astr*rjjkj*jg";
 
         //WHEN
         Boolean actual = sameStarChar.sameStarChar(str);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckExceptionIfStringIsNull(){
+        //GIVEN
+        String str = null;
+
+        //WHEN
+        try{
+            boolean actual = sameStarChar.sameStarChar(str);
+            fail();
+        } catch(NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

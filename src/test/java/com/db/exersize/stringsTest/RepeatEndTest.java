@@ -7,10 +7,10 @@ import static org.junit.Assert.*;
 
 public class RepeatEndTest {
 
-    RepeatEnd repeatEnd = new RepeatEnd();
+    private RepeatEnd repeatEnd = new RepeatEnd();
 
     @Test
-    public void ShouldRepeatEndOfStringTest1() {
+    public void shouldRepeatEndOfStringTest() {
         //GIVEN
         String str = "Bodibodiboo";
         int n = 3;
@@ -24,7 +24,7 @@ public class RepeatEndTest {
     }
 
     @Test
-    public void ShouldRepeatEndOfStringTest2() {
+    public void shouldReturnEmptyStringIfNIsZero() {
         //GIVEN
         String str = "4234";
         int n = 0;
@@ -38,10 +38,10 @@ public class RepeatEndTest {
     }
 
     @Test
-    public void ShouldRepeatEndOfStringTest3() {
+    public void shouldReturnEmptyStringIfStringIsEmpty() {
         //GIVEN
         String str = "";
-        int n = 0;
+        int n = 1;
 
         //WHEN
         String actual = repeatEnd.repeatEnd(str, n);
@@ -52,16 +52,31 @@ public class RepeatEndTest {
     }
 
     @Test
-    public void ShouldRepeatEndOfStringTest4() {
+    public void shouldReturnEmptyStrIfStringWithLengthLessThenN() {
         //GIVEN
-        String str = "OldschoolHollywood89";
-        int n = 4;
+        String str = "Ol";
+        int n = 3;
 
         //WHEN
         String actual = repeatEnd.repeatEnd(str, n);
-        String expected = "od89od89od89od89";
+        String expected = "";
 
         //THEN
         assertEquals(expected, actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckNullPointerExceptionIfStrIsNull(){
+        //GIVEN
+        String str = null;
+        int n = 9;
+
+        //WHEN
+        try{
+            String actual = repeatEnd.repeatEnd(str, n);
+            fail();
+        } catch(NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }

@@ -7,57 +7,67 @@ import static org.junit.Assert.*;
 
 public class XyBalanceTest {
 
-    XyBalance xyBalance = new XyBalance();
+    private XyBalance xyBalance = new XyBalance();
 
     @Test
-    public void ShouldCheckYForEveryXTest1() {
+    public void shouldReturnTrueWhenNoXYInTheStr() {
         //GIVEN
         String str = "The";
 
         //WHEN
         Boolean actual = xyBalance.xyBalance(str);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckYForEveryXTest2() {
+    public void shouldReturnTrueIfExistYForEveryX() {
         //GIVEN
         String str = "sdfsdxjhkjxy";
 
         //WHEN
         Boolean actual = xyBalance.xyBalance(str);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    public void ShouldCheckYForEveryXTest3() {
+    public void shouldReturnFalseIfExistXAfterLastY() {
         //GIVEN
         String str = "sdfsdxjhkjxyfdgdx";
 
         //WHEN
         Boolean actual = xyBalance.xyBalance(str);
-        Boolean expected = false;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(!actual);
     }
 
     @Test
-    public void ShouldCheckYForEveryXTest4() {
+    public void shouldReturnTrueIfYMoreThenX() {
         //GIVEN
         String str = "sdfsdxjhkjxyy";
 
         //WHEN
         Boolean actual = xyBalance.xyBalance(str);
-        Boolean expected = true;
 
         //THEN
-        assertEquals(expected, actual);
+        assertTrue(actual);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void shouldCheckExceptionForNullStr(){
+        //GIVEN
+        String str = null;
+
+        //WHEN
+        try {
+            Boolean actual = xyBalance.xyBalance(str);
+            fail();
+        } catch(NullPointerException e){
+            assertThat(e.getMessage(), null);
+        }
     }
 }
