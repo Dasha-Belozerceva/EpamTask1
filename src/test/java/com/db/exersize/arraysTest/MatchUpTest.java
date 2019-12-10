@@ -75,11 +75,6 @@ public class MatchUpTest {
         int[] arr2 = null;
 
         //WHEN
-        try{
-            int actual = matchUp.matchUp(arr1, arr2);
-            fail();
-        } catch (NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        int actual = matchUp.matchUp(arr1, arr2);
     }
 }

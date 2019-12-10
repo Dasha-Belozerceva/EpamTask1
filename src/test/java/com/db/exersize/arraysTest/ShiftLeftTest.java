@@ -83,11 +83,6 @@ public class ShiftLeftTest {
         int[] arr = null;
 
         //WHEN
-        try{
-            int[] actual = shiftLeft.shiftLeft(arr);
-            fail();
-        } catch (NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        int[] actual = shiftLeft.shiftLeft(arr);
     }
 }

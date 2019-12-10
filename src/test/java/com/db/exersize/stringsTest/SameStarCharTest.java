@@ -63,11 +63,7 @@ public class SameStarCharTest {
         String str = null;
 
         //WHEN
-        try{
-            boolean actual = sameStarChar.sameStarChar(str);
-            fail();
-        } catch(NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+
+        boolean actual = sameStarChar.sameStarChar(str);
     }
 }

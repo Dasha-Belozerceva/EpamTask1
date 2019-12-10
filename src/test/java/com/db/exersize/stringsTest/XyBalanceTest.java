@@ -63,11 +63,6 @@ public class XyBalanceTest {
         String str = null;
 
         //WHEN
-        try {
-            Boolean actual = xyBalance.xyBalance(str);
-            fail();
-        } catch(NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        Boolean actual = xyBalance.xyBalance(str);
     }
 }

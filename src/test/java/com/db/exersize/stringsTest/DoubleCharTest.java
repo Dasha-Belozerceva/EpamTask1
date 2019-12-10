@@ -66,11 +66,6 @@ public class DoubleCharTest {
         String str = null;
 
         //WHEN
-        try{
-            String actual = doubleChar.doubleChar(str);
-            fail();
-        } catch(NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        String actual = doubleChar.doubleChar(str);
     }
 }

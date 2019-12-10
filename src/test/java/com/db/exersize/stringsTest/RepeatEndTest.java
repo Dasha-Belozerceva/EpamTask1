@@ -72,11 +72,6 @@ public class RepeatEndTest {
         int n = 9;
 
         //WHEN
-        try{
-            String actual = repeatEnd.repeatEnd(str, n);
-            fail();
-        } catch(NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        String actual = repeatEnd.repeatEnd(str, n);
     }
 }

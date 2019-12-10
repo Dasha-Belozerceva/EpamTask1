@@ -69,11 +69,6 @@ public class Post4Test {
         int[] newArr = null;
 
         //WHEN
-        try{
-            int[] actual = post4.post4(newArr);
-            fail();
-        } catch (NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        int[] actual = post4.post4(newArr);
     }
 }

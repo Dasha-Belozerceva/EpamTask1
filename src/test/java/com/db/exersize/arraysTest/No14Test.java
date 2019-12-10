@@ -66,11 +66,6 @@ public class No14Test {
         int[] arr = null;
 
         //WHEN
-        try{
-            boolean actual = no14.no14(arr);
-            fail();
-        } catch (NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+       boolean actual = no14.no14(arr);
     }
 }

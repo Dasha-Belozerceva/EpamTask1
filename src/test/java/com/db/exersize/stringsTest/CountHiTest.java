@@ -66,11 +66,6 @@ public class CountHiTest {
         String str = null;
 
         //WHEN
-        try{
-            int actual = countHi.countHi(str);
-            fail();
-        } catch (NullPointerException e){
-            assertThat(e.getMessage(), null);
-        }
+        int actual = countHi.countHi(str);
     }
 }
